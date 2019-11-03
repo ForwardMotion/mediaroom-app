@@ -10,9 +10,9 @@ Vue.use(VueRouter);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import App from './App.vue'
+import App from '@/modules/core/App.vue'
 
-import { router } from './routing.js'
+import { router } from '@/modules/core/router'
 
 Vue.config.productionTip = false
 

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import TheHeader from './TheHeader'
-import TheBanner from './TheBanner'
+import TheHeader from '@/modules/core/TheHeader'
+import TheBanner from '@/modules/core/TheBanner'
 
 export default {
     name: 'app',

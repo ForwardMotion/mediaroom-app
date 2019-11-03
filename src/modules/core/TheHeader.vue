@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    name: 'app-header',
+    name: 'the-header',
     data() {
         return {
             app_title: process.env.VUE_APP_TITLE,

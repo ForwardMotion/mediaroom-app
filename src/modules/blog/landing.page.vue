@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ArticleSummary from './components/ArticleSummary.vue'
+import ArticleSummary from '@/modules/blog/article.summary'
 
 export default {
     name: 'landing',

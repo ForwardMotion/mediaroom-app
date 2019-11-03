@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 
-import Landing from './pages/Landing.vue'
-import ArticleView from './pages/ArticleView.vue'
+import Landing from '@/modules/blog/landing.page'
+import ArticleView from '@/modules/blog/article.page'
 
 const routes = [
     {path: '/', component: Landing},

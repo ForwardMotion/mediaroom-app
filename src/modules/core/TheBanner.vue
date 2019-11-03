@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'banner',
+    name: 'the-banner',
     props: ['title', 'message'],
     data() {
         return {
