@@ -1,11 +1,11 @@
 import VueRouter from 'vue-router';
 
-import Landing from '@/modules/blog/landing.page'
-import ArticleView from '@/modules/blog/article.page'
+import BlogRoutes from '@/modules/blog/blog.routes'
+import UsersRoutes from '@/modules/users/users.routes'
 
 const routes = [
-    {path: '/', component: Landing},
-    {path: '/view/:id', component: ArticleView},
+    ...BlogRoutes,
+    ...UsersRoutes,
 ];
 
 export const router = new VueRouter({
