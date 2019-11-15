@@ -1,8 +1,10 @@
-export const USERS_LOGIN = 'users/LOGIN';
-export const USERS_REGISTER = 'users/REGISTER';
-export const USERS_LOGOUT = 'users/LOGOUT';
-export const USERS_LOAD_STATE = 'users/LOAD_STATE';
-export const USERS_SAVE_STATE = 'users/SAVE_STATE';
+import api from './users.api'
+
+const USERS_LOGIN = 'LOGIN';
+const USERS_REGISTER = 'REGISTER';
+const USERS_LOGOUT = 'LOGOUT';
+const USERS_LOAD_STATE = 'LOAD_STATE';
+const USERS_SAVE_STATE = 'SAVE_STATE';
 
 const users = {
     namespaced: true,
@@ -12,20 +14,25 @@ const users = {
         roles: [],
     },
     mutations: {
-        [USERS_LOAD_STATE] (state, new_state) {
-            state = new_state;
+        [USERS_LOAD_STATE] (state, user_state) {
+            state = user_state;
         },
     },
     actions: {
         async [USERS_LOGIN] ({state, commit}, credentials) {
-            var results = await api.post('login', {
+            var result = await api.post('login', {
                 username: credentials.username,
                 password: credentials.password,
             });
-            commit(USERS_LOGIN, {
-                display_name: results.data.display_name,
-                roles: results.data.roles,
-            });
+
+            if (result.status == 200) {
+                commit(USERS_LOGIN, {
+                    display_name: result.data.display_name,
+                    roles: result.data.roles,
+                });
+                return true;
+            }
+            return false;
         },
         [USERS_SAVE_STATE] ({state, commit}) {
             let store_data = JSON.stringify(state);
@@ -69,3 +76,10 @@ const users = {
 };
 
 export default users;
+export {
+    USERS_LOGIN,
+    USERS_REGISTER,
+    USERS_LOGOUT,
+    USERS_LOAD_STATE,
+    USERS_SAVE_STATE
+}

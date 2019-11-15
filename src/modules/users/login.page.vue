@@ -54,11 +54,21 @@ export default {
     },
     methods: {
         ...mapActions({
-            USERS_LOGIN,
+            'USERS_LOGIN': 'users/' + USERS_LOGIN,
         }),
-        on_submit(evt) {
-            console.log(evt);
+        async on_submit(evt) {
             evt.preventDefault();
+            var success = await this.USERS_LOGIN({
+                username: this.username,
+                password: this.password
+            });
+            if (success) {
+                // Redirect to home
+                console.log('logged in');
+            } else {
+                // Show error message
+                console.error('logged failed');
+            }
         }
     }
 }
